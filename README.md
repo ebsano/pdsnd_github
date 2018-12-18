@@ -16,10 +16,12 @@ The user can then choose to display raw data if desired.
 
 ### This Project consists of:
 - The main python 3 code: `bikeshare.py`
-- Three different city data sets used to analyze:
+- Three different city data sets used to analyze*:
   - chicago.csv
   - new_york_city.csv
   - washington.csv
+
+\*These data sets are not available in the commits here. This info is provided only to inform the user that the tool was developed using these data sets, and it may or may not work fully with other data sets.
 
 You will need Python 3.6 to run this program. You can install Python [here](https://www.python.org/downloads/).
 
