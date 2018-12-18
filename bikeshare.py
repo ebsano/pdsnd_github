@@ -313,12 +313,12 @@ def trip_duration_stats(df):
     start_time = time.time()
 
     # TO DO: display total travel time
-    tot_travel_time = datetime(1,1,1) + pd.to_timedelta(df['Trip Duration'].sum(), unit = 's')
-    print('Total combined travel time is {} hours, {} minutes, and {} seconds.'.format(tot_travel_time.hour, tot_travel_time.minute, tot_travel_time.second))
+    tot_travel_time = pd.to_timedelta(df['Trip Duration'].sum(), unit = 's')
+    print('Total combined travel time is {} days, {} hours, {} minutes, and {} seconds.'.format(tot_travel_time.days, tot_travel_time.seconds//3600, tot_travel_time.seconds % 3600//60, tot_travel_time.seconds % 60))
 
     # TO DO: display mean travel time
-    avg_travel_time = datetime(1,1,1) + pd.to_timedelta(df['Trip Duration'].mean(), unit = 's')
-    print('An average trip lasted {} minutes and {} seconds.'.format(avg_travel_time.minute, avg_travel_time.second))
+    avg_travel_time = pd.to_timedelta(df['Trip Duration'].mean(), unit = 's')
+    print('An average trip lasted {} minutes and {} seconds.'.format(avg_travel_time.seconds//60, avg_travel_time.seconds % 60))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
