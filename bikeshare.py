@@ -383,14 +383,14 @@ def main():
             #first choice for statistical data display
             try:
                 want_time_stats = input('Do you want to see statistical data on bicycle usage time? (yes or no): ').lower()
-                if want_time_stats == 'yes':
+                if want_time_stats == 'yes' or want_time_stats == 'y':
                     time_stats(df)
                     break
-                elif want_time_stats == 'no':
+                elif want_time_stats == 'no' or want_time_stats == 'n':
                     print('\n')
                     break
                 else:
-                    print('Only yes or no are allowed as choice. \n')
+                    print('Only yes/y or no/n are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
 
@@ -398,14 +398,14 @@ def main():
             # Choice of stations statistics display
             try:
                 want_station_stats = input('Do you want to see statistical data on trip stations used? (yes or no): ').lower()
-                if want_station_stats == 'yes':
+                if want_station_stats == 'yes' or want_station_stats == 'y':
                     station_stats(df)
                     break
-                elif want_station_stats == 'no':
+                elif want_station_stats == 'no' or want_station_stats == 'n':
                     print('\n')
                     break
                 else:
-                    print('Only yes or no are allowed as choice. \n')
+                    print('Only yes/y or no/n are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
 
@@ -413,14 +413,14 @@ def main():
             # Choice of trip duration stats display
             try:
                 want_trip_stats = input('Do you want to see statistical data on trip duration? (yes or no): ').lower()
-                if want_trip_stats == 'yes':
+                if want_trip_stats == 'yes' or want_trip_stats == 'y':
                     trip_duration_stats(df)
                     break
-                elif want_trip_stats == 'no':
+                elif want_trip_stats == 'no' or want_trip_stats == 'n':
                     print('\n')
                     break
                 else:
-                    print('Only yes or no are allowed as choice. \n')
+                    print('Only yes/y or no/n are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
 
@@ -428,14 +428,14 @@ def main():
             # Choice of user data analysis display
             try:
                 want_user_stats = input('Do you want to see statistical user data? (yes or no): ').lower()
-                if want_user_stats == 'yes':
+                if want_user_stats == 'yes' or want_user_stats == 'y':
                     user_stats(df)
                     break
-                elif want_user_stats == 'no':
+                elif want_user_stats == 'no' or want_user_stats == 'n':
                     print('\n')
                     break
                 else:
-                    print('Only yes or no are allowed as choice. \n')
+                    print('Only yes/y or no/n are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
 
