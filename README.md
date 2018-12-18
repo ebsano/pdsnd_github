@@ -21,6 +21,8 @@ The user can then choose to display raw data if desired.
   - new_york_city.csv
   - washington.csv
 
+You will need Python 3.6 to run this program. You can install Python [here](https://www.python.org/downloads/).
+
 ### Credits
 This README file was created with inspirations from:
 - [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
