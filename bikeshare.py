@@ -20,7 +20,7 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
         try:
             city_input = input('Would you like to see data for Chicago, New York City, or Washington?\n')
@@ -47,7 +47,7 @@ def get_filters():
                 print('We will analyze {} data, then!'.format(city_input.title()))
                 print('\n')
                 break
-              
+
 
     while True:
         try:
@@ -62,7 +62,7 @@ def get_filters():
                 # TO DO: get user input for month (january, february, ... , june)
                 try:
                     month = input('Which month - January, February, March, April, May, or June? ').lower()
-                except (TypeError, ValueError):              
+                except (TypeError, ValueError):
                     print('That is not a valid month name!\n')
                 except KeyboardInterrupt:
                     try:
@@ -86,7 +86,7 @@ def get_filters():
                         all_done = 'yes'
                         break
 
-                            
+
             elif filter_choice == 'day':
                 # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
                 while True:
@@ -117,13 +117,13 @@ def get_filters():
                             all_done = 'yes'
                             break
 
-                        
+
             elif filter_choice == 'both':
                 # Both month and day need to be specified by the user
                 while True:
                     try:
                         month = input('Which month - January, February, March, April, May, or June? ').lower()
-                    except (TypeError, ValueError):              
+                    except (TypeError, ValueError):
                         print('That is not a valid month name!\n')
                     except KeyboardInterrupt:
                         try:
@@ -147,7 +147,7 @@ def get_filters():
                 while True:
                     try:
                         day = input('Which day - Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, or Sunday? ').lower()
-                    except (TypeError, ValueError):              
+                    except (TypeError, ValueError):
                         print('That is not a valid month name!\n')
                     except KeyboardInterrupt:
                         try:
@@ -168,12 +168,12 @@ def get_filters():
                         else:
                             all_done = 'yes'
                             break
-           
-                 
+
+
             elif filter_choice == 'none':
                 # if no filter is applied, all months and days will be in the data
                 month = 'all'
-                day = 'all' 
+                day = 'all'
                 all_done = 'yes'
                 print('\n')
                 break
@@ -181,15 +181,15 @@ def get_filters():
             else:
                 print('That\'s not a valid choice. Type month, day, both, or none.')
                 all_done = 'no'
-                
+
         if all_done == 'yes':
             break
         elif all_done == 'no':
             continue
-            
-        
-            
-                           
+
+
+
+
 
     print('-'*40)
     return city, month, day
@@ -211,22 +211,22 @@ def load_data(city, month, day):
     df = pd.read_csv(city)
 
     # convert the Start Time column to datetime
-    df['Start Time'] = pd.to_datetime(df['Start Time']) 
+    df['Start Time'] = pd.to_datetime(df['Start Time'])
 
     # extract month and day of week from Start Time to create new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
 
     # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-    
+
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
-        
+
 
     # filter by day of week if applicable
     if day != 'all':
@@ -234,7 +234,7 @@ def load_data(city, month, day):
         df = df[df['day_of_week'] == day.title()]
 
     return df
-    
+
 
 
 def time_stats(df):
@@ -242,16 +242,16 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    # convert the Start Time column to datetime                  
+    # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     # TO DO: display the most common month
-    
+
     # extract month from the Start Time column to create a month column
     df['month'] = df['Start Time'].dt.month
     # find the most common month (from 1 to 12)
     popular_month = df['month'].value_counts().idxmax()
     pop_month_count = max(df['month'].value_counts())
-    print('Most common month is {} with the count of {}.'.format(popular_month, pop_month_count))                      
+    print('Most common month is {} with the count of {}.'.format(popular_month, pop_month_count))
 
 
 
@@ -262,17 +262,17 @@ def time_stats(df):
     # find the most common day of the week (from Monday to Sunday)
     popular_day_of_week = df['day_of_week'].value_counts().idxmax()
     pop_day_count = max(df['day_of_week'].value_counts())
-    print('Most frequent start day of the week is {} with the count of {}.'.format(popular_day_of_week, pop_day_count))                     
+    print('Most frequent start day of the week is {} with the count of {}.'.format(popular_day_of_week, pop_day_count))
 
     # TO DO: display the most common start hour
-    
+
     # extract hour from the Start Time column to create an hour column
     df['hour'] = df['Start Time'].dt.hour
     # find the most common hour (from 0 to 23)
     popular_hour = df['hour'].value_counts().idxmax()
     pop_hour_count = max(df['hour'].value_counts())
-    print('Most frequent start hour is {} with {} starts.'.format(popular_hour, pop_hour_count))                     
-                      
+    print('Most frequent start hour is {} with {} starts.'.format(popular_hour, pop_hour_count))
+
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -322,7 +322,7 @@ def trip_duration_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 
 
 
@@ -331,7 +331,7 @@ def user_stats(df):
 
     print('\nCalculating User Stats...\n')
     start_time = time.time()
-    
+
     # TO DO: Display counts of user types
     user_types = df['User Type'].value_counts()
     print(user_types)
@@ -342,7 +342,7 @@ def user_stats(df):
         gender_breakdown = df['Gender'].value_counts()
         print(gender_breakdown)
     except KeyError:
-        print('This dataframe does not contain gender data, so no gender stats is given.')
+        print('This dataframe does not contain gender data, so no results are returned.')
 
     # TO DO: Display earliest, most recent, and most common year of birth
     # Also the count for the most common year will be included
@@ -355,12 +355,12 @@ def user_stats(df):
         common_count = max(df['Birth Year'].value_counts())
         print('The most common birth year is {}, and the count is {}.'.format(int(common_birth_year), common_count))
     except KeyError:
-        print('\nThis dataframe does not contain birth year data, so no birth year stats is given.')
-    
+        print('\nThis dataframe does not contain birth year data, so no results are returned.')
+
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
 def chunker(df, size):
     """
 #    Takes a dataframe and returns the specified number of entries(size) at a time until
@@ -368,7 +368,7 @@ def chunker(df, size):
 #    """
     for i in range(0, len(df), size):
         yield df.iloc[i:i+size]
-        
+
 
 
 def main():
@@ -379,7 +379,7 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-    
+
         while True:
             #first choice for statistical data display
             try:
@@ -394,7 +394,7 @@ def main():
                     print('Only yes or no are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
-            
+
         while True:
             # Choice of stations statistics display
             try:
@@ -409,7 +409,7 @@ def main():
                     print('Only yes or no are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
-                
+
         while True:
             # Choice of trip duration stats display
             try:
@@ -424,7 +424,7 @@ def main():
                     print('Only yes or no are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
-                
+
         while True:
             # Choice of user data analysis display
             try:
@@ -439,15 +439,15 @@ def main():
                     print('Only yes or no are allowed as choice. \n')
             except:
                 print('Not a valid choice.\n')
-                
+
 
             # option to show raw data 5 rows at a time if the user wants
-        
+
         while True:
             try:
                 for display in chunker(df, 5):
                     show_raw_data = input('Do you want to see more raw data? (yes or no): ').lower()
-                    if show_raw_data == 'yes' or show_raw_data == 'y': 
+                    if show_raw_data == 'yes' or show_raw_data == 'y':
                         print(display)
                     elif show_raw_data == 'no' or show_raw_data == 'n':
                         print('\n')
@@ -460,8 +460,8 @@ def main():
             except Exception as err:
                 print('\nSomething went wrong. Exception {} occurred.\n'.format(err))
             break
-            
-        
+
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
@@ -469,4 +469,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
